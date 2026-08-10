@@ -12,6 +12,9 @@ var velocidade_inicial = -500
 # Criando uma variável array para o ângulo da bola - será usada para aplicar uma velocidade horizontal à bola, evitando que ela mantenha um movimento sempre previsível
 var angulo = [250, -250]
 
+# Criando a variável pongs - que vai contar quantas vezes a bola atinge o topo da tela 
+var pongs = 0
+
 # Função executada a cada frame para verificar eventos físicos no jogo
 func _physics_process(delta):
 	# Verificando se a barra de espaço foi pressionada
@@ -24,9 +27,19 @@ func _physics_process(delta):
 		# A variável colisao vai receber informações quando a bola colidir com algum objeto graças à função move_and_collide()
 		var colisao = move_and_collide(velocity * delta)
 		if colisao != null:
-			# A velocidade da bola vai adquirir novos valores, ou seja, um novo direcionamento pela função bounce(), que recebe dados através de colisao.get_normal() e recalcula a rota da bola, fazendo com que ela ricocheteie
-			# Além disso, a cada colisão, sua velocidade aumentará pela multiplicação com a variável velocidade_incremental
-			velocity = velocity.bounce(colisao.get_normal()) * velocidade_incremental
+			# Usando a função get_collider().name para verificar se a bola está colidindo com a parede superior
+			if colisao.get_collider().name == 'Parede_superior': 
+				# A velocidade da bola vai adquirir novos valores, ou seja, um novo direcionamento pela função bounce(), que recebe dados através de colisao.get_normal() e recalcula a rota da bola, fazendo com que ela ricocheteie
+				# Além disso, a cada colisão, sua velocidade aumentará pela multiplicação com a variável velocidade_incremental
+				velocity = velocity.bounce(colisao.get_normal()) * velocidade_incremental
+				
+				pongs += 1 
+				print(pongs)
+				print('Velocidade aumentou! Cuidado!')
+			# Se a bola colidir com qualquer outra parede, sua velocidade não irá aumentar
+			else:
+				velocity = velocity.bounce(colisao.get_normal())
+			
 			print(velocity)
 
 # Criando uma função para arremessar a bola 

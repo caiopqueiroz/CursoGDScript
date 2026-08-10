@@ -1,8 +1,17 @@
 [gd_scene format=3 uid="uid://bgvshdrpij0rd"]
 
-[ext_resource type="Texture2D" uid="uid://c14101ankvo34" path="res://sprites/Fundo3.png" id="1_lenm3"]
+[ext_resource type="Script" uid="uid://bg5xidfyib4s0" path="res://scripts/game.gd" id="1_a7pla"]
+[ext_resource type="Texture2D" uid="uid://6jxtyslsrayt" path="res://sprites/Fundo1.png" id="1_j42lt"]
+[ext_resource type="FontFile" uid="uid://x3xw0gcf1uq8" path="res://fontes/BalooThambi2-ExtraBold.ttf" id="2_a7pla"]
 [ext_resource type="PackedScene" uid="uid://dp8mf080lel17" path="res://cenas/player.tscn" id="2_emr73"]
 [ext_resource type="PackedScene" uid="uid://b3ao7nucch2pw" path="res://cenas/bola.tscn" id="3_lenm3"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_5rqkx"]
+font = ExtResource("2_a7pla")
+font_size = 250
+font_color = Color(0.44243103, 0.0024090405, 0.9218677, 1)
+outline_size = 3
+shadow_size = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_diyl1"]
 size = Vector2(36, 960)
@@ -11,10 +20,19 @@ size = Vector2(36, 960)
 size = Vector2(540, 39.75)
 
 [node name="Game" type="Node2D" unique_id=181429183]
+script = ExtResource("1_a7pla")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=1865621005]
-texture = ExtResource("1_lenm3")
+texture = ExtResource("1_j42lt")
 centered = false
+
+[node name="Pongs" type="Label" parent="." unique_id=640949760]
+offset_right = 540.0
+offset_bottom = 960.0
+text = "0"
+label_settings = SubResource("LabelSettings_5rqkx")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Player" parent="." unique_id=543750831 instance=ExtResource("2_emr73")]
 position = Vector2(270, 887)
