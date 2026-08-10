@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bgvshdrpij0rd"]
+
+[ext_resource type="Texture2D" uid="uid://c14101ankvo34" path="res://sprites/Fundo3.png" id="1_lenm3"]
+[ext_resource type="PackedScene" uid="uid://dp8mf080lel17" path="res://cenas/player.tscn" id="2_emr73"]
+[ext_resource type="PackedScene" uid="uid://b3ao7nucch2pw" path="res://cenas/bola.tscn" id="3_lenm3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_diyl1"]
+size = Vector2(36, 960)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rqkx"]
+size = Vector2(540, 39.75)
+
+[node name="Game" type="Node2D" unique_id=181429183]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1865621005]
+texture = ExtResource("1_lenm3")
+centered = false
+
+[node name="Player" parent="." unique_id=543750831 instance=ExtResource("2_emr73")]
+position = Vector2(270, 887)
+velocidade = 400
+
+[node name="Bola" parent="." unique_id=840963820 instance=ExtResource("3_lenm3")]
+position = Vector2(270, 857)
+
+[node name="Parede_esquerda" type="StaticBody2D" parent="." unique_id=544633894]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parede_esquerda" unique_id=1236481448]
+position = Vector2(-18, 480)
+shape = SubResource("RectangleShape2D_diyl1")
+
+[node name="Parede_superior" type="StaticBody2D" parent="." unique_id=1804169816]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parede_superior" unique_id=16133217]
+position = Vector2(270, -19.5)
+shape = SubResource("RectangleShape2D_5rqkx")
+
+[node name="Parede_direita" type="StaticBody2D" parent="." unique_id=880043767]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Parede_direita" unique_id=882513697]
+position = Vector2(558, 480)
+shape = SubResource("RectangleShape2D_diyl1")
+
+[node name="Buraco" type="Area2D" parent="." unique_id=355192431]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Buraco" unique_id=1543856896]
+position = Vector2(270, 979.875)
+shape = SubResource("RectangleShape2D_5rqkx")
+debug_color = Color(0.76276153, 0.42791855, 0.39064947, 0.41960785)

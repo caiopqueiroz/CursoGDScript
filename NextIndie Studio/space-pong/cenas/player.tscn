@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dp8mf080lel17"]
+
+[ext_resource type="Texture2D" uid="uid://cj7xn2mf6bkmg" path="res://sprites/Raquete.png" id="1_8or6t"]
+[ext_resource type="Script" uid="uid://dxvr6oemitkf6" path="res://scripts/player.gd" id="1_unwft"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_diyl1"]
+radius = 13.0
+height = 130.0
+
+[node name="Player" type="CharacterBody2D" unique_id=543750831]
+script = ExtResource("1_unwft")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1296281866]
+texture = ExtResource("1_8or6t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1770269239]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_diyl1")

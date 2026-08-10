@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://b3ao7nucch2pw"]
+
+[ext_resource type="Texture2D" uid="uid://cyknrn8qsnpcd" path="res://sprites/Bola.png" id="1_bicm3"]
+[ext_resource type="Script" uid="uid://b8tg7k7lpsqbl" path="res://scripts/bola.gd" id="1_yangn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_diyl1"]
+radius = 17.0
+
+[node name="Bola" type="CharacterBody2D" unique_id=840963820]
+script = ExtResource("1_yangn")
+velocidade_incremental = 1.02
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2105183693]
+texture = ExtResource("1_bicm3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=286700106]
+shape = SubResource("CircleShape2D_diyl1")
