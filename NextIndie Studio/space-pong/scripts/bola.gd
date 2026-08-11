@@ -34,13 +34,9 @@ func _physics_process(delta):
 				velocity = velocity.bounce(colisao.get_normal()) * velocidade_incremental
 				
 				pongs += 1 
-				print(pongs)
-				print('Velocidade aumentou! Cuidado!')
 			# Se a bola colidir com qualquer outra parede, sua velocidade não irá aumentar
 			else:
 				velocity = velocity.bounce(colisao.get_normal())
-			
-			print(velocity)
 
 # Criando uma função para arremessar a bola 
 func inicio_jogo():
