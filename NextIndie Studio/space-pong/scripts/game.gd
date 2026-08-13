@@ -5,6 +5,13 @@ extends Node2D
 @onready var bola = $Bola
 @onready var texto_pongs = $Pongs
 @onready var texto_tutorial = $Tutorial
+@onready var posicoes = $Posicoes
+
+# Criando uma variável que irá armazenar a última posição que gerou um asteroide, para assim controlar o gerador de modo que nunca se formem dois asteroides em sequência na mesma posição
+var ultima_posicao 
+
+# Definindo uma variável como um pré-carregamento da cena asteroide, assim a cena pode ser carregada de forma dinâmica à cena principal game
+var cena_asteroide = preload("res://cenas/asteroide.tscn")
 
 func _process(delta):
 	# Referenciando o texto do nó Pongs usando texto_pongs.text e fazendo com que ele receba continuamente, a cada frame, o valor da variável pongs, que existe no nó Bola, referenciado pela variável bola que criamos
@@ -14,4 +21,23 @@ func _process(delta):
 	
 	# Verificando se a tecla espaço foi apertada para remover o texto do tutorial
 	if Input.is_action_pressed('Start'):
-		texto_tutorial.text = ''
+		texto_tutorial.visible = false
+
+# Criando uma função a partir do sinal emitido pelo nó Buraco, esse nó 'avisará' quando um corpo entrar no seu espaço, assim é possível resetar o jogo porque o player deixou a bola escapar 
+func _on_buraco_body_entered(body: Node2D) -> void:
+	print('Fim de jogo!')
+	# Usando a função call_deferred() para adiar a execução da função criada resetar_cena(), assim ela só será executada uma vez que todas as interações físicas se encerrem, evitando erros no jogo
+	call_deferred('resetar_cena')
+
+# Criando uma função para resetar todos os nós da cena
+func resetar_cena():
+	# Pegando toda a árvore de nós da cena com a função get_tree() e resetando todos os nós presentes nela com reload_current_scene()
+	get_tree().reload_current_scene()
+
+# Criando uma função a partir do sinal emitido pelo nó Timer: Timer_gerador - sua função será spawnar novos asteroides a cada vez que o timer zerar, a cada 3 segundos
+func _on_timer_gerador_timeout() -> void:
+	gerar_asteroide()
+
+# Criando uma função para spawnar asteroides
+func gerar_asteroide():
+	pass

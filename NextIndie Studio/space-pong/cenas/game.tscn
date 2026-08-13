@@ -65,7 +65,7 @@ shape = SubResource("RectangleShape2D_diyl1")
 [node name="Buraco" type="Area2D" parent="." unique_id=355192431]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Buraco" unique_id=1543856896]
-position = Vector2(270, 979.875)
+position = Vector2(270, 987)
 shape = SubResource("RectangleShape2D_5rqkx")
 debug_color = Color(0.76276153, 0.42791855, 0.39064947, 0.41960785)
 
@@ -77,3 +77,24 @@ para começar"
 label_settings = SubResource("LabelSettings_diyl1")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Posicoes" type="Node2D" parent="." unique_id=822632406]
+
+[node name="Pos_01" type="Marker2D" parent="Posicoes" unique_id=250898760]
+position = Vector2(-200, 200)
+
+[node name="Pos_02" type="Marker2D" parent="Posicoes" unique_id=99985767]
+position = Vector2(-200, 400)
+
+[node name="Pos_03" type="Marker2D" parent="Posicoes" unique_id=855409684]
+position = Vector2(740, 100)
+
+[node name="Pos_04" type="Marker2D" parent="Posicoes" unique_id=2053071691]
+position = Vector2(740, 300)
+
+[node name="Timer_gerador" type="Timer" parent="." unique_id=356126509]
+wait_time = 3.0
+autostart = true
+
+[connection signal="body_entered" from="Buraco" to="." method="_on_buraco_body_entered"]
+[connection signal="timeout" from="Timer_gerador" to="." method="_on_timer_gerador_timeout"]

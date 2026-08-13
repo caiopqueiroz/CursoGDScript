@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bvihbumhfohih"]
+
+[ext_resource type="Script" uid="uid://dmxyp0uo5fms4" path="res://scripts/asteroide.gd" id="1_701j1"]
+[ext_resource type="Texture2D" uid="uid://c3fmqqnmbyapi" path="res://sprites/Asteroide1.png" id="1_wgk4j"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_khh5g"]
+radius = 49.0
+height = 100.0
+
+[node name="Asteroide" type="Area2D" unique_id=345698476]
+script = ExtResource("1_701j1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1576634784]
+texture = ExtResource("1_wgk4j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1911960029]
+shape = SubResource("CapsuleShape2D_khh5g")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=40571047]
+
+[node name="Timer_excluir" type="Timer" parent="." unique_id=1654771713]
+one_shot = true
+
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
+[connection signal="timeout" from="Timer_excluir" to="." method="_on_timer_excluir_timeout"]
