@@ -40,4 +40,25 @@ func _on_timer_gerador_timeout() -> void:
 
 # Criando uma função para spawnar asteroides
 func gerar_asteroide():
-	pass
+	# Só permitir a geração dos asteroides uma vez que o jogo já tenha sido iniciado 
+	if bola.inicio == true:
+		# Criando uma variável lista_posicoes que está recebendo, pela função get_children() os nós filhos do nó referenciado como posicoes, cada nó filho representa uma possível posição diferente onde pode ser spawnado um asteroide
+		var lista_posicoes = posicoes.get_children()
+		# Usando a função pick_random() para escolher aleatoriamente uma das posições e guardá-la em uma variável
+		var posicao_spawn = lista_posicoes.pick_random()
+		# Verificando se a nova posição de spawn é a mesma posição anterior para evitar que 2 asteroides consecutivos sejam gerados no mesmo local 
+		if posicao_spawn != ultima_posicao:
+			# Instanciando a cena pré-carregada anteriormente no código e atribuindo a uma nova variável pela função instantiate(), somente assim ela pode ser utilizada
+			var instancia_asteroide = cena_asteroide.instantiate()
+			# Utilizando agora o método global_position para atribuir à cena instanciada a posição guardada na variável posicao_spawn, com o uso de .position
+			instancia_asteroide.global_position = posicao_spawn.position
+			# Depois de concluídas todas essas etapas, utilizando finalmente a função add_child() para inserir a cena do asteroide na cena principal do jogo, ou seja, fazer com que apareça em tela
+			add_child(instancia_asteroide)
+			# Atribuindo a posicao_spawn (atual) para a variável ultima_posicao, assim ela nunca poderá ser escolhida como a próxima
+			ultima_posicao = posicao_spawn
+		# Se a nova posição escolhida aleatoriamente for igual à última, a função será executada novamente até que uma outra seja escolhida
+		else:
+			gerar_asteroide()
+		
+		print('Asteroide gerado')
+				
