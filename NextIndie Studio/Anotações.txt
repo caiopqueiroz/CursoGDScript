@@ -52,3 +52,9 @@ Nó para marcar intervalos de tempo dentro do jogo, útil para desencadear açõ
 Nó que notifica quando o objeto entra ou sai da visualização: VisibleOnScreenNotifier2D
 
 Caso seja necessário, por exemplo, gerar objetos de maneira dinâmica, eles não podem ser instaciados à cena principal do jogo como de costume, precisam ser pré-carregados através de código
+
+Para configurar o que acontecerá após uma colisâo: emitir um sinal partindo do objeto que for acertado, como por exemplo on_body_entered, e programar a colisão a partir dessa função 
+
+Caminho para alterar o nível de colisão dos objetos do jogo: Projeto -> Configurações do projeto -> Nomes das camadas -> Física 2D
+- Depois, em cada objeto, no Inspector, na aba Collision, configurar cada um de acordo com sua respectiva layer
+- O campo mask indica as layers que esse objeto irá poder colidir 

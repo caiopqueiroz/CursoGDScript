@@ -39,7 +39,12 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 
 # Criando, através de um sinal, a função que irá disparar imediatamente após o fim do timer, ela irá excluir o asteroide
 func _on_timer_excluir_timeout() -> void:
-	print('Saiu!')
-	print('Asteroide deletado!')
 	# Usando a função queue_free() para deletar o nó da cena
+	queue_free()
+
+# Criando uma função, através de um sinal, que irá disparar quando um objeto colidir com o asteroide, nesse caso, o parâmetro body na função vai receber esse objeto, que será a bola
+func _on_body_entered(body):
+	# Acessando a variável pongs da bola através de body
+	body.pongs += 1
+	# Deletando o asteroide quando ele entrar em contato com a bola usando a função queue_free()
 	queue_free()

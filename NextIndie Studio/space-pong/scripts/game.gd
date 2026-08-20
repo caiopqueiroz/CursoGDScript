@@ -60,5 +60,4 @@ func gerar_asteroide():
 		else:
 			gerar_asteroide()
 		
-		print('Asteroide gerado')
 				

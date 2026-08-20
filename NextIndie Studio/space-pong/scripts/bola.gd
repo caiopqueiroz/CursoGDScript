@@ -31,7 +31,11 @@ func _physics_process(delta):
 			if colisao.get_collider().name == 'Parede_superior': 
 				# A velocidade da bola vai adquirir novos valores, ou seja, um novo direcionamento pela função bounce(), que recebe dados através de colisao.get_normal() e recalcula a rota da bola, fazendo com que ela ricocheteie
 				# Além disso, a cada colisão, sua velocidade aumentará pela multiplicação com a variável velocidade_incremental
-				velocity = velocity.bounce(colisao.get_normal()) * velocidade_incremental
+				# Verificando o valor completo da velocidade, velocity.length() alcançou 1500, caso tenha alcançado, ela não irá mais aumentar
+				if velocity.length() < 1500:
+					velocity = velocity.bounce(colisao.get_normal()) * velocidade_incremental
+				else:
+					velocity = velocity.bounce(colisao.get_normal())
 				
 				pongs += 1 
 			# Se a bola colidir com qualquer outra parede, sua velocidade não irá aumentar

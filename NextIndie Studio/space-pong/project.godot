@@ -31,6 +31,14 @@ Start={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Bola"
+2d_physics/layer_3="Paredes"
+2d_physics/layer_4="Asteroides"
+2d_physics/layer_5="Buraco"
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
