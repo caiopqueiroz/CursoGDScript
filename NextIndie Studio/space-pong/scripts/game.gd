@@ -16,10 +16,11 @@ var cena_asteroide = preload("res://cenas/asteroide.tscn")
 
 # Declarando dicionários para armazenar sprites e recursos de cores que sofreram alterações com o decorrer do jogo - background, pongs e asteroides
 var recursos_asteroide = {}
-
 var recursos_background = {}
-
 var recursos_cores_texto = {}
+
+# Definindo uma variável que irá guardar a nova cor do asteroide sempre que ela for trocada 
+var nova_cor_asteroide 
 
 func _ready():
 	# Chamando a função criada para pré-carregar os recursos/sprites que precisamos para trocar as cores do jogo dinamicamente
@@ -67,6 +68,10 @@ func gerar_asteroide():
 			var instancia_asteroide = cena_asteroide.instantiate()
 			# Utilizando agora o método global_position para atribuir à cena instanciada a posição guardada na variável posicao_spawn, com o uso de .position
 			instancia_asteroide.global_position = posicao_spawn.position
+			# Criando uma condição para que, se a variável nova_cor_asteroide já tiver uma atribuição, os próximos asteroides a serem instanciadas tenham a cor correta
+			if nova_cor_asteroide != null:
+				# Para isso, usando get_node('Sprite2D').texture
+				instancia_asteroide.get_node('Sprite2D').texture = nova_cor_asteroide
 			# Depois de concluídas todas essas etapas, utilizando finalmente a função add_child() para inserir a cena do asteroide na cena principal do jogo, ou seja, fazer com que apareça em tela
 			add_child(instancia_asteroide)
 			# Atribuindo a posicao_spawn (atual) para a variável ultima_posicao, assim ela nunca poderá ser escolhida como a próxima
@@ -118,22 +123,27 @@ func checar_pongs(pongs):
 			atualizar_cores(
 				'cor2', 'background2'
 			)
+			atualizar_asteroides('asteroide2')
 		20:
 			atualizar_cores(
 				'cor3', 'background3'
 			)
+			atualizar_asteroides('asteroide3')
 		30:
 			atualizar_cores(
 				'cor4', 'background4'
 			)
+			atualizar_asteroides('asteroide4')
 		40:
 			atualizar_cores(
 				'cor5', 'background5'
 			)
+			atualizar_asteroides('asteroide5')
 		50:
 			atualizar_cores(
 				'cor6', 'background6'
 			)
+			atualizar_asteroides('asteroide6')
 	
 # Criando uma função para alterar as cores do jogo seguindo o comando da outra função criada checar_pongs() - ela vai receber como parâmetros as chaves dos dicionários criados com os arquivos necessários
 func atualizar_cores(
@@ -149,3 +159,11 @@ func atualizar_cores(
 func atualizar_asteroides(chave_cor_asteroide):
 	# Definindo uma variável que irá receber o grupo que contém todos os nós da cena asteroide através das funções get_tree().get_nodes_in_group() - assim, sempre que um novo asteroide for instanciado à cena, é possível ter acesso a ele para trocar sua cor 
 	var asteroides = get_tree().get_nodes_in_group('asteroides')
+	
+	# Criando um laço de repetição for que irá percorrer todo o grupo de asteroides 
+	for asteroide in asteroides:
+		# Usando a função get_node('Sprite2D').texture para refenciar a propriedade texture do nó que possui o sprite - assim, fazendo com que receba o elemento do dicionário correspondente para cada caso usando a chave do dicionário
+		asteroide.get_node('Sprite2D').texture = recursos_asteroide[chave_cor_asteroide]
+	
+	# Usando a variável nova_cor_asteroide para guardar a informação da cor atual que devem ser os novos asteroides gerados, assim é possível usar essa variável diretamente na geração deles
+	nova_cor_asteroide = recursos_asteroide[chave_cor_asteroide]
