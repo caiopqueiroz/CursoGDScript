@@ -1,0 +1,75 @@
+﻿sintaxe;função;exemplo de uso
+var nome = valor;Cria uma variável e atribui um valor a ela.;var inicio = false
+@export var nome = valor;Cria uma variável que pode ser editada pelo Inspector da Godot.;@export var velocidade = 100
+@onready var nome = valor;Cria uma variável quando os nós da cena já foram inicializados.;@onready var bola = $Bola
+var nome;Declara uma variável sem atribuir um valor inicialmente.;var ultima_posicao
+var nome = [];Cria uma variável do tipo Array (lista).;var angulo = [250, -250]
+var nome = {};Cria uma variável do tipo Dictionary (dicionário).;var recursos_asteroide = {}
+func nome():;Cria uma função.;func inicio_jogo():
+func nome(parametro):;Cria uma função que recebe um parâmetro.;func checar_pongs(pongs):
+func nome() -> void:;Cria uma função especificando que ela não retorna nenhum valor.;func _on_timer_excluir_timeout() -> void:
+_ready();Função executada uma vez quando o script entra na cena.;func _ready():
+_process(delta);Função executada continuamente, uma vez a cada frame.;func _process(delta):
+_physics_process(delta);Função executada a cada frame físico, usada para alterações relacionadas à física.;func _physics_process(delta):
+if condição:;Executa um bloco de código caso a condição seja verdadeira.;if inicio:
+elif condição:;Verifica uma nova condição caso o if anterior seja falso.;elif lado_inicial == 'esquerda':
+else:;Executa um bloco caso as condições anteriores sejam falsas.;else:
+==;Verifica se dois valores são iguais.;if inicio == false:
+!=;Verifica se dois valores são diferentes.;if colisao != null:
+<;Verifica se um valor é menor que outro.;if velocity.length() < 1500:
+>;Verifica se um valor é maior que outro.;if global_position.x > 540:
+"Input.is_action_pressed(""ação"")";Verifica se uma determinada ação está sendo pressionada.;Input.is_action_pressed('Start')
+"Input.is_action_pressed(""ui_left"")";Verifica se a ação associada à seta esquerda está sendo pressionada.;Input.is_action_pressed('ui_left')
+"Input.is_action_pressed(""ui_right"")";Verifica se a ação associada à seta direita está sendo pressionada.;Input.is_action_pressed('ui_right')
+move_and_collide(velocity * delta);Move um objeto considerando colisões.;move_and_collide(velocity * delta)
+velocity.x;Acessa a velocidade horizontal do objeto.;velocity.x += velocidade
+velocity.y;Acessa a velocidade vertical do objeto.;velocity.y = velocidade_inicial
+velocity.bounce(normal);Altera a velocidade para fazer o objeto ricochetear de acordo com a normal da colisão.;velocity.bounce(colisao.get_normal())
+velocity.length();Obtém o valor completo/magnitude da velocidade.;if velocity.length() < 1500:
+delta;Representa o tempo passado desde o último frame, permitindo movimento consistente.;global_position.x += velocidade * delta
+var colisao = move_and_collide(...);Armazena as informações da colisão resultante do movimento.;var colisao = move_and_collide(velocity * delta)
+colisao != null;Verifica se ocorreu uma colisão.;if colisao != null:
+colisao.get_collider();Obtém o objeto com o qual ocorreu a colisão.;colisao.get_collider()
+colisao.get_collider().name;Obtém o nome do objeto que sofreu a colisão.;colisao.get_collider().name == 'Parede_superior'
+colisao.get_normal();Obtém a normal da superfície atingida pela colisão.;velocity.bounce(colisao.get_normal())
+$NomeDoNo;Referencia diretamente um nó filho.;@onready var bola = $Bola
+get_parent();Obtém o nó pai do objeto atual.;get_parent()
+"get_node(""NomeDoNo"")";Encontra um nó através do seu nome ou caminho.;get_node('Bola')
+"get_parent().get_node(""Bola"")";Acessa o nó pai e, a partir dele, encontra outro nó.;bola = get_parent().get_node('Bola')
+get_children();Obtém os nós filhos de determinado nó.;posicoes.get_children()
+global_position;Acessa a posição global de um nó na cena.;global_position.x
+global_position.x;Acessa a coordenada horizontal global.;global_position.x += velocidade * delta
+global_position = posição;Define a posição global de um nó.;instancia_asteroide.global_position = posicao_spawn.position
+rotation;Acessa a rotação de um nó.;rotation += velocidade_rotacao * delta
+.position;Acessa a posição de um objeto.;posicao_spawn.position
+.visible;Acessa ou altera a visibilidade de um nó.;texto_tutorial.visible = false
+timer.start();Inicia um Timer.;timer_excluir.start()
+queue_free();Remove ou deleta um nó da cena.;queue_free()
+_on_timer_excluir_timeout();Função chamada quando o Timer termina.;func _on_timer_excluir_timeout() -> void:
+"call_deferred(""função"")";Adia a execução de uma função para que ela ocorra posteriormente.;call_deferred('resetar_cena')
+"preload(""caminho"")";Pré-carrega um recurso ou cena para que possa ser utilizado posteriormente.;"preload(""res://cenas/asteroide.tscn"")"
+cena.instantiate();Cria uma instância de uma cena previamente carregada.;cena_asteroide.instantiate()
+add_child(objeto);Adiciona um nó como filho do nó atual.;add_child(instancia_asteroide)
+get_tree();Obtém a árvore de nós da cena ou jogo.;get_tree()
+get_tree().reload_current_scene();Recarrega a cena atual.;get_tree().reload_current_scene()
+[valor1, valor2];Cria um Array contendo vários valores.;var angulo = [250, -250]
+array.pick_random();Escolhe aleatoriamente um elemento do Array.;angulo.pick_random()
+array.get_children();Obtém os nós filhos e os armazena em um Array.;var lista_posicoes = posicoes.get_children()
+"{""chave"": valor}";Cria uma associação entre uma chave e um valor.;'cor1': '7101eb'
+dicionario[chave];Acessa o valor armazenado em uma chave.;recursos_cores_texto[chave_cor_texto]
+dicionario[chave] = valor;Altera ou define o valor associado a uma chave.;recursos_asteroide[chave]
+"preload(""caminho"") dentro de Dictionary";Armazena um recurso pré-carregado em uma chave.;"'asteroide1': preload(""res://sprites/Asteroide1.png"")"
+match variável:;Funciona de maneira semelhante ao switch, executando um bloco conforme o valor da variável.;match pongs:
+valor:;Define o caso que será executado quando a variável possuir aquele valor.;10:
+match + função;Permite executar diferentes funções dependendo do valor.;10: atualizar_cores('cor2', 'background2')
+for variável in coleção:;Percorre cada elemento de uma coleção, executando o código para cada elemento.;for asteroide in asteroides:
+"get_tree().get_nodes_in_group(""grupo"")";Obtém todos os nós que pertencem a determinado grupo.;get_tree().get_nodes_in_group('asteroides')
+str(valor);Converte um valor para String ou texto.;texto_pongs.text = str(bola.pongs)
+objeto.text;Acessa ou altera o texto de um objeto que possui a propriedade text.;texto_pongs.text = str(bola.pongs)
+objeto.visible;Define se um objeto está visível.;texto_tutorial.visible = false
+objeto.propriedade = valor;Altera diretamente uma propriedade de um objeto.;velocity.x = 0
+objeto.propriedade.subpropriedade = valor;Acessa propriedades mais internas de um objeto.;texto_pongs.label_settings.font_color = recursos_cores_texto[chave_cor_texto]
+objeto.set_texture(recurso);Altera a textura de um objeto.;background.set_texture(recursos_background[chave_cor_background])
+func _on_NOME_timeout() -> void:;Função chamada quando um Timer emite o sinal timeout.;func _on_timer_excluir_timeout() -> void:
+func _on_NOME_body_entered(body):;Função chamada quando um corpo entra na área ou objeto que emitiu o sinal.;func _on_body_entered(body):
+func _on_NOME_screen_exited() -> void:;Função chamada quando um objeto sai da visualização.;func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
