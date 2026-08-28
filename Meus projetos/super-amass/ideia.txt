@@ -1,0 +1,30 @@
+Jogo simples de acumular pontos fazendo alguma ação, como alinhar blocos iguais em sequência, por exemplo
+
+O jogo vai ser sobre alinhar blocos iguais em sequência de fato? 
+- O que precisa ser:
+- Algo muito simples e fácil de entender logo de cara 
+- Bem colorido e animado 
+
+Alternativas: 
+- Jogar ao controlar um personagem pela tela que derrota inimigos gerados aleatoriamente. Nesse caso, as mecânicas de golpe devem ser o ponto forte, ou seja, extremamente satisfatórias para o jogador. Ele deve querer sempre derrotar o próximo inimigo. A pontuação crescente a cada vítima aparecerá bem grande ao fundo na tela, pulsando cada vez que aumentar. À medida que o número crescer, em algum momento, se tornará tão grande que passará a cobrir todo o cenário da arena
+
+De que cenas precisamos para isso?
+
+Jogo / Node2D
+No script do jogo deverão estar:
+- O instanciamento dos inimigos de maneira dinâmica 
+- A contagem de pontos 
+
+Player / CharacterBody2D -> Sprite2D + CollisionShape2D
+No script do player deverão estar:
+- A sua movimentação 
+- Mecânica de golpe 
+
+Inimigo / CharacterBody2D -> Sprite2D + CollisionShape2D
+No script do inimigo deverão estar:
+- A sua movimentação 
+- Ataque ao player
+
+Pontuação / Label
+
+O diferencial é que os pontos são sempre acumulativos, inclusive ao fechar o jogo e iniciar novamente, ou seja, uma vez que você começou a jogar, a contagem de pontos nunca vai resetar 
