@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://rus50him2ks6" path="res://scripts/player.gd" id="1_unwft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unwft"]
-size = Vector2(56, 57)
+size = Vector2(96, 128)
 
 [node name="Player" type="CharacterBody2D" unique_id=918640361]
 script = ExtResource("1_unwft")
@@ -14,5 +14,6 @@ velocidade = 300
 texture = ExtResource("1_8or6t")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=53399111]
-position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_unwft")
+
+[node name="Posicao_espada" type="Marker2D" parent="." unique_id=1572337999]

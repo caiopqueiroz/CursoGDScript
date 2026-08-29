@@ -1,7 +1,14 @@
 [gd_scene format=3 uid="uid://bcxo1uwl6bdcg"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=1274004390]
+[ext_resource type="Texture2D" uid="uid://4v0gynefm3lh" path="res://sprites/inimigo.png" id="1_1nma5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_unwft"]
+size = Vector2(96, 128)
+
+[node name="Inimigo" type="CharacterBody2D" unique_id=1274004390]
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=462022451]
+texture = ExtResource("1_1nma5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=155098136]
+shape = SubResource("RectangleShape2D_unwft")

@@ -59,7 +59,7 @@ func gerar_asteroide():
 	# Só permitir a geração dos asteroides uma vez que o jogo já tenha sido iniciado 
 	if bola.inicio == true:
 		# Criando uma variável lista_posicoes que está recebendo, pela função get_children() os nós filhos do nó referenciado como posicoes, cada nó filho representa uma possível posição diferente onde pode ser spawnado um asteroide
-		var lista_posicoes = posicoes.get_children()
+		var lista_posicoes = posicoes.get_children() 
 		# Usando a função pick_random() para escolher aleatoriamente uma das posições e guardá-la em uma variável
 		var posicao_spawn = lista_posicoes.pick_random()
 		# Verificando se a nova posição de spawn é a mesma posição anterior para evitar que 2 asteroides consecutivos sejam gerados no mesmo local 

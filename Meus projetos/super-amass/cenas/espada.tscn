@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b7rmt3anelfwy"]
+
+[ext_resource type="Texture2D" uid="uid://do1fhc5gt84ya" path="res://sprites/espada.png" id="1_8jcnd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_diyl1"]
+size = Vector2(64, 16)
+
+[node name="Espada" type="Area2D" unique_id=321856170]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1391595679]
+texture = ExtResource("1_8jcnd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1045395748]
+shape = SubResource("RectangleShape2D_diyl1")
