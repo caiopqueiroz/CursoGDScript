@@ -3,9 +3,14 @@ extends CharacterBody2D
 # objetivo: fazer o player se movimentar para todas as 4 direções
 # objetivo: conseguir exibir 'teste' quando o player colidir com o inimigo  
 # objetivo: fazer a espada aparecer para o player quando o jogador pressionar a tecla P
+# objetivo: fazer a espada sumir automaticamente após 1 segundo
 
 # Criando uma variável para a velocidade do jogador 
 @export var velocidade = 100
+
+# Criando referências a nós
+@onready var posicao_espada = $Posicao_espada
+@onready var timer_excluir = $Timer_excluir
 
 # Pré-carregando a cena da espada para o script do player 
 var cena_espada = preload('res://cenas/espada.tscn')
@@ -40,4 +45,22 @@ func _physics_process(delta):
 		pass
 		
 	if Input.is_action_pressed('Ataque'):
-		pass
+		# Usando a nó referenciado Posicao_espada para definí-la
+		var posicao = posicao_espada
+		
+		# Instanciando a cena pré-carregada da espada e atribuindo a uma nova variável
+		var instancia_espada = cena_espada.instantiate()
+		
+		# Aplicando a posição à espada
+		instancia_espada.global_position = posicao.position
+
+		# Por fim, usando a função add_child() para fazer com que a espada de fato apareça na tela 
+		add_child(instancia_espada)
+		
+		timer_excluir.start()
+		
+		
+func _on_timer_excluir_timeout() -> void:
+	var espada = get_node('Espada')
+	espada.queue_free()
+	print('Teste')

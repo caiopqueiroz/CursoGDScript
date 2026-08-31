@@ -8,7 +8,6 @@ extends Area2D
 @export var velocidade_rotacao = 1.3
 
 # Criando uma variável para controlar o nó Timer_excluir que irá deletar o asteroide quando deixar a tela
-# @onready var timer_excluir = get.parent().get_node('Timer_excluir')
 @onready var timer_excluir = $Timer_excluir
 
 # Criando uma variável para encontrar o lado em que o asteroide foi gerado

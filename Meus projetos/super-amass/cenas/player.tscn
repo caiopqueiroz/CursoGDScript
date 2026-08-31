@@ -17,3 +17,9 @@ texture = ExtResource("1_8or6t")
 shape = SubResource("RectangleShape2D_unwft")
 
 [node name="Posicao_espada" type="Marker2D" parent="." unique_id=1572337999]
+position = Vector2(-48, 0)
+
+[node name="Timer_excluir" type="Timer" parent="." unique_id=800738757]
+one_shot = true
+
+[connection signal="timeout" from="Timer_excluir" to="." method="_on_timer_excluir_timeout"]
