@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://bcxo1uwl6bdcg"]
 
 [ext_resource type="Texture2D" uid="uid://4v0gynefm3lh" path="res://sprites/inimigo.png" id="1_1nma5"]
+[ext_resource type="Script" uid="uid://b50hxsrjm1mdu" path="res://scripts/inimigo.gd" id="1_l8wry"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unwft"]
 size = Vector2(96, 128)
 
 [node name="Inimigo" type="CharacterBody2D" unique_id=1274004390]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_l8wry")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=462022451]
 texture = ExtResource("1_1nma5")
