@@ -4,5 +4,7 @@
 # Conseguir exibir 'teste' quando o player colidir com o inimigo  
 # Fazer a espada aparecer para o player quando o jogador pressionar a tecla P
 # Fazer a espada desaparecer quando o jogador soltar a tecla
-
 # Fazer o inimigo andar na direção do player 
+# Fazer os inimigos serem gerados na cena de forma dinâmica de acordo com um intervalo de tempo 
+
+# Fazer o player se virar parar todas as 4 direções, e também movimentar a espada para cima e para baixo

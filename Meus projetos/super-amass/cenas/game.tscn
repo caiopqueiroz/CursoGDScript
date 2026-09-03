@@ -1,12 +1,19 @@
 [gd_scene format=3 uid="uid://ntsksvjeqnq2"]
 
 [ext_resource type="PackedScene" uid="uid://djldgvrgchsj2" path="res://cenas/player.tscn" id="1_cibmi"]
-[ext_resource type="PackedScene" uid="uid://bcxo1uwl6bdcg" path="res://cenas/inimigo.tscn" id="2_emr73"]
+[ext_resource type="Script" uid="uid://b5uc7m7bvtmig" path="res://scripts/game.gd" id="1_emr73"]
 
 [node name="Game" type="Node2D" unique_id=685383750]
+script = ExtResource("1_emr73")
 
 [node name="Player" parent="." unique_id=918640361 instance=ExtResource("1_cibmi")]
 position = Vector2(569, 304)
 
-[node name="Inimigo" parent="." unique_id=1274004390 instance=ExtResource("2_emr73")]
-position = Vector2(318, 303)
+[node name="Gerador_inimigo" type="Timer" parent="." unique_id=480367993]
+wait_time = 3.0
+autostart = true
+
+[node name="Posicao_inimigo" type="Marker2D" parent="." unique_id=1128259689]
+position = Vector2(117, 103)
+
+[connection signal="timeout" from="Gerador_inimigo" to="." method="_on_gerador_inimigo_timeout"]

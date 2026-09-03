@@ -8,8 +8,9 @@ size = Vector2(96, 128)
 
 [node name="Inimigo" type="CharacterBody2D" unique_id=1274004390]
 collision_layer = 4
-collision_mask = 3
+collision_mask = 7
 script = ExtResource("1_l8wry")
+velocidade = 120
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=462022451]
 texture = ExtResource("1_1nma5")

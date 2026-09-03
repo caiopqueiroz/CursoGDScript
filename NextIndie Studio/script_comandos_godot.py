@@ -20,6 +20,6 @@ df = pd.read_csv(
 # função
 # exemplo de uso
 print(df[
-    df['sintaxe'].str.contains('pressed', case = False)
+    df['sintaxe'].str.contains('position', case = False)
 ])
 
