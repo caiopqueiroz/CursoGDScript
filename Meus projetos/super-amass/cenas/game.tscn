@@ -3,6 +3,21 @@
 [ext_resource type="PackedScene" uid="uid://djldgvrgchsj2" path="res://cenas/player.tscn" id="1_cibmi"]
 [ext_resource type="Script" uid="uid://b5uc7m7bvtmig" path="res://scripts/game.gd" id="1_emr73"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_diyl1"]
+font_size = 150
+font_color = Color(1, 1, 1, 0.18039216)
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_5rqkx"]
+font_size = 100
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_diyl1"]
+size = Vector2(116, 647.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rqkx"]
+size = Vector2(1167, 69)
+
 [node name="Game" type="Node2D" unique_id=685383750]
 script = ExtResource("1_emr73")
 
@@ -13,7 +28,91 @@ position = Vector2(569, 304)
 wait_time = 3.0
 autostart = true
 
-[node name="Posicao_inimigo" type="Marker2D" parent="." unique_id=1128259689]
-position = Vector2(117, 103)
+[node name="Posicoes_inimigos" type="Node2D" parent="." unique_id=1219452911]
+
+[node name="Posicao_inimigo1" type="Marker2D" parent="Posicoes_inimigos" unique_id=1128259689]
+position = Vector2(-126, 102)
+
+[node name="Posicao_inimigo2" type="Marker2D" parent="Posicoes_inimigos" unique_id=854175050]
+position = Vector2(-123, 535)
+
+[node name="Posicao_inimigo3" type="Marker2D" parent="Posicoes_inimigos" unique_id=68336862]
+position = Vector2(1282, 105)
+
+[node name="Posicao_inimigo4" type="Marker2D" parent="Posicoes_inimigos" unique_id=1088977232]
+position = Vector2(1288, 536)
+
+[node name="Posicoes_vidas" type="Node2D" parent="." unique_id=539361179]
+
+[node name="Vida1" type="Marker2D" parent="Posicoes_vidas" unique_id=1018182957]
+position = Vector2(666, 564)
+
+[node name="Vida2" type="Marker2D" parent="Posicoes_vidas" unique_id=612159532]
+position = Vector2(867, 564)
+
+[node name="Vida3" type="Marker2D" parent="Posicoes_vidas" unique_id=541337947]
+position = Vector2(1057, 566)
+
+[node name="Texto_pontos" type="Label" parent="." unique_id=175289573]
+offset_right = 1153.0
+offset_bottom = 648.0
+text = "0"
+label_settings = SubResource("LabelSettings_diyl1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer_aumento" type="Timer" parent="." unique_id=929371330]
+wait_time = 0.25
+one_shot = true
+
+[node name="Timer_diminuicao" type="Timer" parent="." unique_id=176752924]
+wait_time = 0.5
+one_shot = true
+
+[node name="Texto_game_over" type="Label" parent="." unique_id=1492868702]
+z_index = 1
+offset_right = 1152.0
+offset_bottom = 648.0
+text = "GAME OVER 
+'P' para reiniciar"
+label_settings = SubResource("LabelSettings_5rqkx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer_invencivel_player" type="Timer" parent="." unique_id=1384770928]
+wait_time = 2.0
+one_shot = true
+
+[node name="Paredes" type="Node2D" parent="." unique_id=670731472]
+
+[node name="Parede_esquerda" type="StaticBody2D" parent="Paredes" unique_id=735537966]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/Parede_esquerda" unique_id=574165676]
+position = Vector2(-58, 323.25)
+shape = SubResource("RectangleShape2D_diyl1")
+
+[node name="Parede_direita" type="StaticBody2D" parent="Paredes" unique_id=18062298]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/Parede_direita" unique_id=1613139569]
+position = Vector2(1210, 325)
+shape = SubResource("RectangleShape2D_diyl1")
+
+[node name="Parede_topo" type="StaticBody2D" parent="Paredes" unique_id=1364940328]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/Parede_topo" unique_id=287609680]
+position = Vector2(568, -34)
+shape = SubResource("RectangleShape2D_5rqkx")
+
+[node name="Parede_baixo" type="StaticBody2D" parent="Paredes" unique_id=1560187813]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Paredes/Parede_baixo" unique_id=2078375727]
+position = Vector2(583, 684)
+shape = SubResource("RectangleShape2D_5rqkx")
 
 [connection signal="timeout" from="Gerador_inimigo" to="." method="_on_gerador_inimigo_timeout"]
+[connection signal="timeout" from="Timer_aumento" to="." method="_on_timer_aumento_timeout"]
+[connection signal="timeout" from="Timer_invencivel_player" to="." method="_on_timer_invencivel_player_timeout"]

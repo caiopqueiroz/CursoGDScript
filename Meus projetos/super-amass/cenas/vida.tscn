@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cww5wf27ha0tr"]
+
+[ext_resource type="Texture2D" uid="uid://ct7gaxhfauy6y" path="res://sprites/vida.png" id="1_s8q48"]
+[ext_resource type="Script" uid="uid://bvjha0uxn6cdw" path="res://scripts/vida.gd" id="1_ysi0r"]
+
+[node name="Vida" type="Node2D" unique_id=1841877371]
+script = ExtResource("1_ysi0r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=145812091]
+texture = ExtResource("1_s8q48")
