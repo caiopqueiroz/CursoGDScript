@@ -37,7 +37,7 @@ func _process(delta):
 # Timer para disparar a função de gerar inimigos
 func _on_gerador_inimigo_timeout() -> void:
 	if permitir_gerar_inimigos:
-		if total_inimigos < 5:
+		if total_inimigos < 1:
 			gerar_inimigo()
 			
 			total_inimigos += 1

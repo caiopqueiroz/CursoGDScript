@@ -2,15 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://djldgvrgchsj2" path="res://cenas/player.tscn" id="1_cibmi"]
 [ext_resource type="Script" uid="uid://b5uc7m7bvtmig" path="res://scripts/game.gd" id="1_emr73"]
+[ext_resource type="FontFile" uid="uid://dyc4nkf4241wh" path="res://fontes/Hurry Up.otf" id="3_lenm3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_diyl1"]
+font = ExtResource("3_lenm3")
 font_size = 150
-font_color = Color(1, 1, 1, 0.18039216)
+font_color = Color(0.3882353, 0.654902, 0.1254902, 0.35686275)
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_5rqkx"]
+font = ExtResource("3_lenm3")
 font_size = 100
+font_color = Color(0.3882353, 0.654902, 0.1254902, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_diyl1"]
 size = Vector2(116, 647.5)
@@ -73,8 +77,8 @@ one_shot = true
 z_index = 1
 offset_right = 1152.0
 offset_bottom = 648.0
-text = "GAME OVER 
-'P' para reiniciar"
+text = "GAME  OVER 
+' P '  para  reiniciar"
 label_settings = SubResource("LabelSettings_5rqkx")
 horizontal_alignment = 1
 vertical_alignment = 1

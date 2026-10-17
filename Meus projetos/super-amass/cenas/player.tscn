@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://djldgvrgchsj2"]
 
-[ext_resource type="Texture2D" uid="uid://c1gqq6c45ymrl" path="res://sprites/player.png" id="1_8or6t"]
 [ext_resource type="Script" uid="uid://rus50him2ks6" path="res://scripts/player.gd" id="1_unwft"]
+[ext_resource type="Texture2D" uid="uid://1m630o712a2n" path="res://sprites/novos_sprites/panda/Panda frente.png" id="2_unwft"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unwft"]
-size = Vector2(86, 118)
+size = Vector2(70, 117)
 
 [node name="Player" type="CharacterBody2D" unique_id=918640361]
 collision_mask = 12
@@ -12,9 +12,10 @@ script = ExtResource("1_unwft")
 velocidade = 300
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=315037392]
-texture = ExtResource("1_8or6t")
+texture = ExtResource("2_unwft")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=53399111]
+position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_unwft")
 
 [node name="Timer_excluir" type="Timer" parent="." unique_id=800738757]
@@ -23,15 +24,15 @@ one_shot = true
 [node name="Posicoes_espada" type="Node2D" parent="." unique_id=1301642025]
 
 [node name="Esquerda" type="Marker2D" parent="Posicoes_espada" unique_id=1572337999]
-position = Vector2(-48, 0)
+position = Vector2(-58, 16)
 
 [node name="Direita" type="Marker2D" parent="Posicoes_espada" unique_id=684729068]
-position = Vector2(48, 0)
+position = Vector2(58, 16)
 
 [node name="Cima" type="Marker2D" parent="Posicoes_espada" unique_id=1586145503]
-position = Vector2(0, -64)
+position = Vector2(33, -52)
 
 [node name="Baixo" type="Marker2D" parent="Posicoes_espada" unique_id=765866607]
-position = Vector2(0, 64)
+position = Vector2(-28, 56)
 
 [connection signal="timeout" from="Timer_excluir" to="." method="_on_timer_excluir_timeout"]

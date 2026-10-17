@@ -17,12 +17,16 @@
 # Exibir uma mensagem de game over quando o player perder 
 # Fazer com que os inimigos sejam gerados em posições aleatórias pela tela
 # Impedir que o player saia da tela
+# Criar sprites
+# Implementar a animação do leopardo andando
 
-# Criar sprites 
+# Ideia: limitar o uso do ataque para que não seja possível disparar sequencialmente muito rápido - ou seja, quando apertada a tecla P, o panda vai disparar um ataque e recolher a espada automaticamente, exceto se o jogador manter a tecla pressionada, assim o panda continuará 'armado'
+# Ideia: enquanto o player manter empunhado o bambu, aparecerá uma barra de energia na tela, quando ela se esgotar, o bambu vai ser recolhido imediatamente e barra começará a carregar de novo - será impossível usar o ataque enquanto a barra estiver zerada
+# Criar sprites de animação do panda se movimentando 
 # Fazer o player piscar enquanto estiver invencível
 # Criar ataques especiais para o player - por exemplo: empunhar duas espadas ao mesmo tempo (esquerda e direita) durante alguns segundos - depois a habilidade precisa de um tempo para usar novamente
 # Pedir a Júlia para jogar e sugestões sobre o que adicionar
 
 # Problemas:
 # Espada fica travada e não some 
-# Inimigos sendo gerados mais do que o permitido 
+# Inimigos sendo gerados mais do que o permitido

@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bcxo1uwl6bdcg"]
 
-[ext_resource type="Texture2D" uid="uid://4v0gynefm3lh" path="res://sprites/inimigo.png" id="1_1nma5"]
 [ext_resource type="Script" uid="uid://b50hxsrjm1mdu" path="res://scripts/inimigo.gd" id="1_l8wry"]
+[ext_resource type="Texture2D" uid="uid://ws6d8o4dp0bh" path="res://sprites/novos_sprites/leopardo/Leopardo.png" id="2_l8wry"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_unwft"]
-size = Vector2(96, 128)
+size = Vector2(89, 47)
 
 [node name="Inimigo" type="CharacterBody2D" unique_id=1274004390]
 collision_layer = 4
@@ -13,7 +13,14 @@ script = ExtResource("1_l8wry")
 velocidade = 120
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=462022451]
-texture = ExtResource("1_1nma5")
+texture = ExtResource("2_l8wry")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=155098136]
+position = Vector2(6.5, -1.5)
 shape = SubResource("RectangleShape2D_unwft")
+
+[node name="Timer_trocar_sprite" type="Timer" parent="." unique_id=2089667473]
+wait_time = 0.25
+autostart = true
+
+[connection signal="timeout" from="Timer_trocar_sprite" to="." method="_on_timer_trocar_sprite_timeout"]
