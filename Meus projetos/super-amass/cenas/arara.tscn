@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://23o0rtaeehro"]
+
+[ext_resource type="Script" uid="uid://0jvmlgccgu64" path="res://scripts/arara.gd" id="1_5bydp"]
+[ext_resource type="Texture2D" uid="uid://b1rfqlsnipq3f" path="res://sprites/arara.png" id="1_tpb7c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_diyl1"]
+size = Vector2(96, 58)
+
+[node name="Arara" type="CharacterBody2D" unique_id=770071593]
+script = ExtResource("1_5bydp")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1213431752]
+texture = ExtResource("1_tpb7c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1997228401]
+shape = SubResource("RectangleShape2D_diyl1")

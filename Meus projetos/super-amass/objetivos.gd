@@ -1,4 +1,4 @@
-# Neste script ficaram os objetivos a cumprir do projeto
+# Neste script ficarão os objetivos a cumprir do projeto
 
 # Fazer o player se movimentar para todas as 4 direções
 # Conseguir exibir 'teste' quando o player colidir com o inimigo  
@@ -19,13 +19,21 @@
 # Impedir que o player saia da tela
 # Criar sprites
 # Implementar a animação do leopardo andando
+# Ideia: limitar o uso do ataque para que não seja possível disparar sequencialmente muito rápido - ou seja, quando apertada a tecla P, o panda vai disparar um ataque e recolher a espada automaticamente
 
-# Ideia: limitar o uso do ataque para que não seja possível disparar sequencialmente muito rápido - ou seja, quando apertada a tecla P, o panda vai disparar um ataque e recolher a espada automaticamente, exceto se o jogador manter a tecla pressionada, assim o panda continuará 'armado'
-# Ideia: enquanto o player manter empunhado o bambu, aparecerá uma barra de energia na tela, quando ela se esgotar, o bambu vai ser recolhido imediatamente e barra começará a carregar de novo - será impossível usar o ataque enquanto a barra estiver zerada
+# Ideia: encontrar uma forma de trazer mais desafio ao jogo - problema: é muito fácil derrotar os inimigos - opções: 
+# 1 ) Fazer eles correrem em momentos aleatórios 
+# 2 ) Aumentar a quantidade de lugares onde eles podem ser gerados 
+# 3 ) Fazer a visão do panda embaçar quando ele for atingido
+# 4 ) Aumentar a velocidade deles de acordo com a quantidade de pontos
+# 5 ) Fazer com que eles desviem da espada sob determinadas condições
+# 6 ) Criar mais inimigos, com características diferentes
+# Ideia: criar um inimigo arara que voa por cima do panda e joga pedras sobre ele, para se defender, ele precisa mirar para cima e destruir a pedra no momento certo 
 # Criar sprites de animação do panda se movimentando 
 # Fazer o player piscar enquanto estiver invencível
 # Criar ataques especiais para o player - por exemplo: empunhar duas espadas ao mesmo tempo (esquerda e direita) durante alguns segundos - depois a habilidade precisa de um tempo para usar novamente
 # Pedir a Júlia para jogar e sugestões sobre o que adicionar
+# Ideia: enquanto o player manter empunhado o bambu, aparecerá uma barra de energia na tela, quando ela se esgotar, o bambu vai ser recolhido imediatamente e barra começará a carregar de novo - será impossível usar o ataque enquanto a barra estiver zerada
 
 # Problemas:
 # Espada fica travada e não some 

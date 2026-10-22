@@ -17,7 +17,6 @@ var panda_ataque_direita = load("res://sprites/novos_sprites/panda/Panda ataque 
 var panda_ataque_frente = load("res://sprites/novos_sprites/panda/Panda ataque frente.png")
 var panda_ataque_costas = load("res://sprites/novos_sprites/panda/Panda ataque costas.png")
 var posicao_ataque = false
-var espada_guardada = false 
 
 # Referências a nós
 @onready var posicoes_espada = $Posicoes_espada
@@ -27,7 +26,7 @@ func _physics_process(delta):
 	if permitir_acoes:
 		mover_player(delta)
 		
-	if Input.is_action_just_pressed('Ataque'):
+	if Input.is_action_just_pressed('Ataque') and posicao_ataque == false:
 		
 		timer_excluir.start()
 
@@ -51,21 +50,6 @@ func _physics_process(delta):
 			$Sprite2D.texture = panda_ataque_esquerda
 			
 			$Sprite2D.z_index = 0
-
-	#if not espada_guardada:
-		
-	#	posicao_ataque = false
-		
-	#	guardar_espada()
-		
-	#	if direcao == 'baixo':
-	#		$Sprite2D.texture = panda_frente
-	#	if direcao == 'cima':
-	#		$Sprite2D.texture = panda_costas
-	#	if direcao == 'esquerda':
-	#		$Sprite2D.texture = panda_esquerda
-	#	if direcao == 'direita':
-	#		$Sprite2D.texture = panda_direita
 		
 # Criando uma função para fazer o jogador empunhar sua espada pronto para atacar
 func sacar_espada():
@@ -144,19 +128,16 @@ func mover_player(delta):
 	
 func _on_timer_excluir_timeout() -> void:
 	
-	if not Input.is_action_pressed('Ataque'):
+	posicao_ataque = false
 		
-		posicao_ataque = false
-			
-		guardar_espada()
+	guardar_espada()
+	
+	if direcao == 'baixo':
+		$Sprite2D.texture = panda_frente
+	if direcao == 'cima':
+		$Sprite2D.texture = panda_costas
+	if direcao == 'esquerda':
+		$Sprite2D.texture = panda_esquerda
+	if direcao == 'direita':
+		$Sprite2D.texture = panda_direita
 		
-		if direcao == 'baixo':
-			$Sprite2D.texture = panda_frente
-		if direcao == 'cima':
-			$Sprite2D.texture = panda_costas
-		if direcao == 'esquerda':
-			$Sprite2D.texture = panda_esquerda
-		if direcao == 'direita':
-			$Sprite2D.texture = panda_direita
-			
-		#espada_guardada = true

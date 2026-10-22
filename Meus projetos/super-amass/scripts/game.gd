@@ -9,6 +9,7 @@ var vida2
 var vida3
 var pontos = 0 
 var permitir_gerar_inimigos = true
+var cena_arara = preload("res://cenas/arara.tscn")
 
 # Referenciando nós
 @onready var posicoes_inimigos = $Posicoes_inimigos
@@ -20,6 +21,7 @@ var permitir_gerar_inimigos = true
 @onready var texto_game_over = $Texto_game_over
 @onready var player = $Player
 @onready var timer_invencivel_player = $Timer_invencivel_player
+@onready var posicao_arara = $Posicoes_inimigos/Posicao_arara
 
 func _ready():
 	vida1 = gerar_vida(0)
@@ -37,7 +39,7 @@ func _process(delta):
 # Timer para disparar a função de gerar inimigos
 func _on_gerador_inimigo_timeout() -> void:
 	if permitir_gerar_inimigos:
-		if total_inimigos < 1:
+		if total_inimigos < 0:
 			gerar_inimigo()
 			
 			total_inimigos += 1
@@ -112,3 +114,17 @@ func verificar_game_over():
 func _on_timer_invencivel_player_timeout() -> void:
 	 
 	player.invencivel = false
+
+func _on_timer_gerador_arara_timeout() -> void:
+	
+	gerar_arara()
+	
+func gerar_arara():
+	
+	var posicao = posicao_arara.position
+	
+	var instancia_arara = cena_arara.instantiate()
+	
+	instancia_arara.global_position = posicao
+	
+	add_child(instancia_arara)
