@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://bdojwo0ry4pgh"]
 
+[ext_resource type="Script" uid="uid://di2nlioioeoov" path="res://cenas/pedra.gd" id="1_0txm3"]
 [ext_resource type="Texture2D" uid="uid://do1fhc5gt84ya" path="res://sprites/espada.png" id="1_plltg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_diyl1"]
 size = Vector2(64, 16)
 
 [node name="Pedra" type="Area2D" unique_id=347087522]
+script = ExtResource("1_0txm3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1858169099]
 texture = ExtResource("1_plltg")

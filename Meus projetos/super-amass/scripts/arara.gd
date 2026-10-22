@@ -9,46 +9,23 @@ var cena_pedra = preload("res://cenas/pedra.tscn")
 
 func _ready():
 	
-	print(arara.global_position)
-	
-	jogar_pedra()
+	pass
 
 func _physics_process(delta):
 	
 	mover_arara(delta)
-	
-	#if arara.global_position.x == player.global_position.x:
-		
-	#	jogar_pedra()
 	
 func mover_arara(delta):
 	
 	velocity.x = 0
 	velocity.y = 0
 	
-	#if arara.global_position.x < player.global_position.x:
+	if arara.global_position.x < 1300:
 		
-	#position.x += velocidade_horizontal
+		position.x += velocidade_horizontal
 	
 	if arara.global_position.y < (player.global_position.y - 150):
 		
 		position.y += velocidade_vertical
 		
 	move_and_collide(velocity * delta)
-
-func jogar_pedra():
-	
-	# IDEIA: Criar a função jogar_pedra dentro da cena game 
-	
-	var posicao = arara
-	
-	var instancia_pedra = cena_pedra.instantiate()
-	
-	posicao.position.y += 100
-
-	instancia_pedra.global_position = posicao.position
-	
-	#instancia_pedra.position.x += 20
-	#instancia_pedra.position.y += 20
-	
-	add_child(instancia_pedra)

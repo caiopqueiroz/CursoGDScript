@@ -29,6 +29,7 @@
 # 5 ) Fazer com que eles desviem da espada sob determinadas condições
 # 6 ) Criar mais inimigos, com características diferentes
 # Ideia: criar um inimigo arara que voa por cima do panda e joga pedras sobre ele, para se defender, ele precisa mirar para cima e destruir a pedra no momento certo 
+# Ideia: deixar os sprites do jogo estilo jogos 8 bits muito simples, adicionar um bestiário que contará quantos inimigos o player já derrotou e elaborar um sistema de emblemas que mudarão de acordo com a quantidade de pontos
 # Criar sprites de animação do panda se movimentando 
 # Fazer o player piscar enquanto estiver invencível
 # Criar ataques especiais para o player - por exemplo: empunhar duas espadas ao mesmo tempo (esquerda e direita) durante alguns segundos - depois a habilidade precisa de um tempo para usar novamente

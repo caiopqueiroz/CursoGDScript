@@ -47,7 +47,7 @@ position = Vector2(1282, 105)
 position = Vector2(1288, 536)
 
 [node name="Posicao_arara" type="Marker2D" parent="Posicoes_inimigos" unique_id=1572840242]
-position = Vector2(574, 162)
+position = Vector2(132, 162)
 
 [node name="Posicoes_vidas" type="Node2D" parent="." unique_id=539361179]
 
