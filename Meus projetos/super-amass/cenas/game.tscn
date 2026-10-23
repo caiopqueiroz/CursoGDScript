@@ -47,7 +47,7 @@ position = Vector2(1282, 105)
 position = Vector2(1288, 536)
 
 [node name="Posicao_arara" type="Marker2D" parent="Posicoes_inimigos" unique_id=1572840242]
-position = Vector2(132, 162)
+position = Vector2(-241, -47)
 
 [node name="Posicoes_vidas" type="Node2D" parent="." unique_id=539361179]
 
@@ -122,7 +122,6 @@ shape = SubResource("RectangleShape2D_5rqkx")
 
 [node name="Timer_gerador_arara" type="Timer" parent="." unique_id=2040331312]
 wait_time = 5.0
-one_shot = true
 autostart = true
 
 [connection signal="timeout" from="Gerador_inimigo" to="." method="_on_gerador_inimigo_timeout"]

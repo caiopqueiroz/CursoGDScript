@@ -3,8 +3,8 @@ extends CharacterBody2D
 @onready var arara = $"."
 @onready var player = $"../Player"
 
-var velocidade_horizontal = 1
-var velocidade_vertical = 1
+var velocidade_horizontal = 5
+var velocidade_vertical = 5
 var cena_pedra = preload("res://cenas/pedra.tscn")
 
 func _ready():
@@ -23,9 +23,17 @@ func mover_arara(delta):
 	if arara.global_position.x < 1300:
 		
 		position.x += velocidade_horizontal
-	
-	if arara.global_position.y < (player.global_position.y - 150):
+	else:
 		
-		position.y += velocidade_vertical
+		arara.queue_free()
+	
+	if arara.global_position.x < player.global_position.x:
+	
+		if arara.global_position.y < (player.global_position.y - 300):
+		
+			position.y += velocidade_vertical
+	else:
+			
+		position.y -= velocidade_vertical
 		
 	move_and_collide(velocity * delta)

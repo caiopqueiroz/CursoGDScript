@@ -12,6 +12,7 @@ var permitir_gerar_inimigos = true
 var cena_arara = preload("res://cenas/arara.tscn")
 var cena_pedra = preload("res://cenas/pedra.tscn")
 var instancia_arara
+var pedra_caiu = false
 
 # Referenciando nós
 @onready var posicoes_inimigos = $Posicoes_inimigos
@@ -40,11 +41,13 @@ func _process(delta):
 	
 	if instancia_arara != null:
 	
-		if instancia_arara.position.x == player.position.x:
-		
-			print('Pedra')
+		if instancia_arara.position.x > player.position.x:
 			
-			jogar_pedra()
+			if not pedra_caiu:
+				
+				print('Pedra')
+				
+				jogar_pedra()
 
 # Timer para disparar a função de gerar inimigos
 func _on_gerador_inimigo_timeout() -> void:
@@ -131,6 +134,8 @@ func _on_timer_gerador_arara_timeout() -> void:
 	
 func gerar_arara():
 	
+	pedra_caiu = false
+	
 	var posicao = posicao_arara.position
 	
 	var instancia_arara = cena_arara.instantiate()
@@ -152,4 +157,6 @@ func jogar_pedra():
 	instancia_pedra.global_position = posicao
 	
 	add_child(instancia_pedra)
+	
+	pedra_caiu = true
 	
