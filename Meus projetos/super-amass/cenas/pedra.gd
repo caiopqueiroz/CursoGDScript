@@ -15,9 +15,15 @@ func _physics_process(delta):
 		# Usando a função clampf para travar a posição da Area2D e não deixar que a velocidade cresça infinitamente
 		position.y = clampf(position.y, -position.y, position.y)
 		
-func _on_body_entered(body):
+func _on_body_entered(corpo):
+		
+		var nome = corpo.scene_file_path
+		
+		#print(nome.get_file().get_basename())
 	
-	perder_vida()
+		if nome.get_file().get_basename() == 'player':
+		
+			perder_vida()
 
 func perder_vida():
 	

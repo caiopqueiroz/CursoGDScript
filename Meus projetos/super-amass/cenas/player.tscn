@@ -19,6 +19,7 @@ position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_unwft")
 
 [node name="Timer_excluir" type="Timer" parent="." unique_id=800738757]
+wait_time = 0.5
 one_shot = true
 
 [node name="Posicoes_espada" type="Node2D" parent="." unique_id=1301642025]

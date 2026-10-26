@@ -13,6 +13,8 @@ var cena_arara = preload("res://cenas/arara.tscn")
 var cena_pedra = preload("res://cenas/pedra.tscn")
 var instancia_arara
 var pedra_caiu = false
+var posicao_antiga 
+var posicao 
 
 # Referenciando nós
 @onready var posicoes_inimigos = $Posicoes_inimigos
@@ -32,6 +34,7 @@ func _ready():
 	vida3 = gerar_vida(2)
 	
 	texto_game_over.visible = false
+
 	
 func _process(delta):
 	
@@ -58,9 +61,14 @@ func _on_gerador_inimigo_timeout() -> void:
 			total_inimigos += 1
 	
 func gerar_inimigo():
-	# Definindo a posição do inimigo 
-	var lista_posicoes = posicoes_inimigos.get_children()
-	var posicao = lista_posicoes.pick_random()
+	# Definindo a posição do inimigo
+	while posicao == posicao_antiga:
+		var lista_posicoes = posicoes_inimigos.get_children()
+		posicao = lista_posicoes.pick_random()
+		
+		print(posicao.get_name())
+	
+	posicao_antiga = posicao
 	
 	# Instanciando a cena inimigo
 	var instancia_inimigo = cena_inimigo.instantiate()
@@ -130,7 +138,15 @@ func _on_timer_invencivel_player_timeout() -> void:
 
 func _on_timer_gerador_arara_timeout() -> void:
 	
-	instancia_arara = gerar_arara()
+	var numeros = range(0, 10)
+	
+	var numero = numeros.pick_random()
+	
+	print(numero)
+	
+	if numero == 0:
+		
+		instancia_arara = gerar_arara()
 	
 func gerar_arara():
 	

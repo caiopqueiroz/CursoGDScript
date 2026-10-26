@@ -39,6 +39,7 @@ Teste={
 2d_physics/layer_2="Espada "
 2d_physics/layer_3="Inimigo"
 2d_physics/layer_4="Paredes"
+2d_physics/layer_5="Arara"
 
 [physics]
 

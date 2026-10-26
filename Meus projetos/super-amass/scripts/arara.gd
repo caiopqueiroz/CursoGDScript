@@ -3,7 +3,7 @@ extends CharacterBody2D
 @onready var arara = $"."
 @onready var player = $"../Player"
 
-var velocidade_horizontal = 5
+var velocidade_horizontal = 20
 var velocidade_vertical = 5
 var cena_pedra = preload("res://cenas/pedra.tscn")
 

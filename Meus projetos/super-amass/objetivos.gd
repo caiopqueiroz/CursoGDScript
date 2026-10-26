@@ -20,15 +20,17 @@
 # Criar sprites
 # Implementar a animação do leopardo andando
 # Ideia: limitar o uso do ataque para que não seja possível disparar sequencialmente muito rápido - ou seja, quando apertada a tecla P, o panda vai disparar um ataque e recolher a espada automaticamente
+# 6 ) Criar mais inimigos, com características diferentes
+# Ideia: criar um inimigo arara que voa por cima do panda e joga pedras sobre ele, para se defender, ele precisa mirar para cima e destruir a pedra no momento certo
 
+# Colocar uma aviso para quando a arara estiver prestes a aparecer, o player correr para a parte de baixo do cenário
+# Fazer com que a arara só apareça em momentos aleatórios
 # Ideia: encontrar uma forma de trazer mais desafio ao jogo - problema: é muito fácil derrotar os inimigos - opções: 
 # 1 ) Fazer eles correrem em momentos aleatórios 
 # 2 ) Aumentar a quantidade de lugares onde eles podem ser gerados 
 # 3 ) Fazer a visão do panda embaçar quando ele for atingido
 # 4 ) Aumentar a velocidade deles de acordo com a quantidade de pontos
 # 5 ) Fazer com que eles desviem da espada sob determinadas condições
-# 6 ) Criar mais inimigos, com características diferentes
-# Ideia: criar um inimigo arara que voa por cima do panda e joga pedras sobre ele, para se defender, ele precisa mirar para cima e destruir a pedra no momento certo 
 # Ideia: deixar os sprites do jogo estilo jogos 8 bits muito simples, adicionar um bestiário que contará quantos inimigos o player já derrotou e elaborar um sistema de emblemas que mudarão de acordo com a quantidade de pontos
 # Criar sprites de animação do panda se movimentando 
 # Fazer o player piscar enquanto estiver invencível
