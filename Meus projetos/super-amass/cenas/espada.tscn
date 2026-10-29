@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://b7rmt3anelfwy"]
 
 [ext_resource type="Script" uid="uid://dvxjvvw76s8gf" path="res://scripts/espada.gd" id="1_cb5va"]
-[ext_resource type="Texture2D" uid="uid://bqu6usb26dtjj" path="res://sprites/novos_sprites/bambu/Bambu.png" id="2_cb5va"]
+[ext_resource type="Texture2D" uid="uid://ctryogd845dsn" path="res://sprites/Sprites 8 bits/png/Bambu.png" id="2_cb5va"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_diyl1"]
-size = Vector2(64, 16)
+size = Vector2(64, 14)
 
 [node name="Espada" type="Area2D" unique_id=321856170]
+z_index = 1
+position = Vector2(744, 262)
 collision_layer = 2
-collision_mask = 4
+collision_mask = 36
 script = ExtResource("1_cb5va")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1391595679]

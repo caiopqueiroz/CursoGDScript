@@ -1,18 +1,21 @@
 [gd_scene format=3 uid="uid://bdojwo0ry4pgh"]
 
 [ext_resource type="Script" uid="uid://di2nlioioeoov" path="res://cenas/pedra.gd" id="1_0txm3"]
-[ext_resource type="Texture2D" uid="uid://do1fhc5gt84ya" path="res://sprites/espada.png" id="1_plltg"]
+[ext_resource type="Texture2D" uid="uid://rp7flnrr8pd6" path="res://sprites/Sprites 8 bits/png/Pedra.png" id="2_0txm3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_diyl1"]
-size = Vector2(64, 16)
+size = Vector2(32, 32)
 
 [node name="Pedra" type="Area2D" unique_id=347087522]
+collision_layer = 32
+collision_mask = 3
 script = ExtResource("1_0txm3")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1858169099]
-texture = ExtResource("1_plltg")
+texture = ExtResource("2_0txm3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=684965527]
 shape = SubResource("RectangleShape2D_diyl1")
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

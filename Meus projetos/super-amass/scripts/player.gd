@@ -10,8 +10,8 @@ var invencivel = false
 var permitir_acoes = true
 var panda_direita = load("res://sprites/novos_sprites/panda/Panda direita.png")
 var panda_esquerda = load("res://sprites/novos_sprites/panda/Panda esquerda.png")
-var panda_costas = load("res://sprites/novos_sprites/panda/Panda costas.png")
-var panda_frente = load("res://sprites/novos_sprites/panda/Panda frente.png")
+var panda_costas = load("res://sprites/Sprites 8 bits/png/Panda costas.png")
+var panda_frente = load("res://sprites/Sprites 8 bits/png/Panda.png")
 var panda_ataque_esquerda = load("res://sprites/novos_sprites/panda/Panda ataque esquerda.png")
 var panda_ataque_direita = load("res://sprites/novos_sprites/panda/Panda ataque direita.png")
 var panda_ataque_frente = load("res://sprites/novos_sprites/panda/Panda ataque frente.png")
@@ -23,7 +23,9 @@ var posicao_ataque = false
 @onready var timer_excluir = $Timer_excluir
 
 func _physics_process(delta):
+	
 	if permitir_acoes:
+		
 		mover_player(delta)
 		
 	if Input.is_action_just_pressed('Ataque') and posicao_ataque == false:
@@ -34,20 +36,22 @@ func _physics_process(delta):
 		
 		sacar_espada()
 		
-		if direcao == 'baixo':
-			$Sprite2D.texture = panda_ataque_frente
-			
-			$Sprite2D.z_index = -2
-		if direcao == 'cima':
-			$Sprite2D.texture = panda_ataque_costas
-			
-			$Sprite2D.z_index = 0
+		#if direcao == 'baixo':
+			#$Sprite2D.texture = panda_ataque_frente
+			#
+			#$Sprite2D.z_index = -2
+		#if direcao == 'cima':
+			#$Sprite2D.texture = panda_ataque_costas
+			#
+			#$Sprite2D.z_index = 0
 		if direcao == 'esquerda':
-			$Sprite2D.texture = panda_ataque_direita
+			
+			$Sprite2D.texture = panda_frente
 			
 			$Sprite2D.z_index = 0
 		if direcao == 'direita':
-			$Sprite2D.texture = panda_ataque_esquerda
+			
+			$Sprite2D.texture = panda_frente
 			
 			$Sprite2D.z_index = 0
 		
@@ -96,15 +100,15 @@ func mover_player(delta):
 	if Input.is_action_pressed('ui_left'):
 		velocity.x -= velocidade
 		
-		if not posicao_ataque:
-			$Sprite2D.texture = panda_esquerda
+		#if not posicao_ataque:
+		#	$Sprite2D.texture = panda_esquerda
 		
 		direcao = 'esquerda'
 	if Input.is_action_pressed('ui_right'):
 		velocity.x += velocidade
 		
-		if not posicao_ataque:
-			$Sprite2D.texture = panda_direita
+		#if not posicao_ataque:
+		#	$Sprite2D.texture = panda_direita
 		
 		direcao = 'direita'
 	if Input.is_action_pressed('ui_up'):
@@ -124,7 +128,6 @@ func mover_player(delta):
 		
 	# Usando a função move_and_collide() - que é responsável por de fato mover o jogador
 	move_and_collide(velocity * delta)
-	pass
 	
 func _on_timer_excluir_timeout() -> void:
 	
@@ -136,8 +139,8 @@ func _on_timer_excluir_timeout() -> void:
 		$Sprite2D.texture = panda_frente
 	if direcao == 'cima':
 		$Sprite2D.texture = panda_costas
-	if direcao == 'esquerda':
-		$Sprite2D.texture = panda_esquerda
-	if direcao == 'direita':
-		$Sprite2D.texture = panda_direita
+	#if direcao == 'esquerda':
+		#$Sprite2D.texture = panda_esquerda
+	#if direcao == 'direita':
+		#$Sprite2D.texture = panda_direita
 		

@@ -27,6 +27,8 @@ var posicao
 @onready var player = $Player
 @onready var timer_invencivel_player = $Timer_invencivel_player
 @onready var posicao_arara = $Posicoes_inimigos/Posicao_arara
+@onready var texto_aviso_arara = $Texto_aviso_arara
+@onready var timer_aviso_arara = $Timer_aviso_arara
 
 func _ready():
 	vida1 = gerar_vida(0)
@@ -35,7 +37,6 @@ func _ready():
 	
 	texto_game_over.visible = false
 
-	
 func _process(delta):
 	
 	pulsar_pontos()
@@ -55,18 +56,26 @@ func _process(delta):
 # Timer para disparar a função de gerar inimigos
 func _on_gerador_inimigo_timeout() -> void:
 	if permitir_gerar_inimigos:
-		if total_inimigos < 0:
-			gerar_inimigo()
+		
+		var numeros = range(1, 4)
+		
+		var numero = numeros.pick_random()
+		
+		if total_inimigos < 5:
 			
-			total_inimigos += 1
+			for inimigo in range(0, numero):
+				
+				gerar_inimigo()
+			
+				total_inimigos += 1
 	
 func gerar_inimigo():
 	# Definindo a posição do inimigo
 	while posicao == posicao_antiga:
-		var lista_posicoes = posicoes_inimigos.get_children()
-		posicao = lista_posicoes.pick_random()
 		
-		print(posicao.get_name())
+		var lista_posicoes = posicoes_inimigos.get_children()
+		
+		posicao = lista_posicoes.pick_random()
 	
 	posicao_antiga = posicao
 	
@@ -112,11 +121,11 @@ func _on_timer_aumento_timeout() -> void:
 func pulsar_pontos():
 	if not timer_aumento.is_stopped():
 		
-		if texto_pontos.label_settings.font_size < 300:
+		if texto_pontos.label_settings.font_size < 600:
 			texto_pontos.label_settings.font_size += 8
 	if not timer_diminuicao.is_stopped():
 		
-		if texto_pontos.label_settings.font_size > 150:
+		if texto_pontos.label_settings.font_size > 300:
 			texto_pontos.label_settings.font_size -= 8
 	
 func resetar_cena():
@@ -142,11 +151,13 @@ func _on_timer_gerador_arara_timeout() -> void:
 	
 	var numero = numeros.pick_random()
 	
-	print(numero)
-	
 	if numero == 0:
 		
 		instancia_arara = gerar_arara()
+
+		texto_aviso_arara.text = '↓ ↓ ↓'
+		
+		timer_aviso_arara.start()
 	
 func gerar_arara():
 	
@@ -176,3 +187,6 @@ func jogar_pedra():
 	
 	pedra_caiu = true
 	
+func _on_timer_aviso_arara_timeout() -> void:
+	
+	texto_aviso_arara.text = ''

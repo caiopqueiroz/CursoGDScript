@@ -1,6 +1,6 @@
 extends Area2D
 
-var aceleracao = 400
+var aceleracao = 550
 
 @onready var pedra = $"."
 @onready var game = get_parent()
@@ -17,13 +17,13 @@ func _physics_process(delta):
 		
 func _on_body_entered(corpo):
 		
-		var nome = corpo.scene_file_path
-		
-		#print(nome.get_file().get_basename())
+	var nome = corpo.scene_file_path
+
+	if nome.get_file().get_basename() == 'player':
 	
-		if nome.get_file().get_basename() == 'player':
+		perder_vida()
 		
-			perder_vida()
+		queue_free()
 
 func perder_vida():
 	
@@ -49,3 +49,12 @@ func perder_vida():
 			game.vida1.total_vidas = 0
 			
 			game.vida3.visible = false
+
+func _on_area_entered(area):
+	
+	var nome = area.scene_file_path.get_file().get_basename()
+	
+	if nome == 'espada':
+		
+		queue_free()
+		
