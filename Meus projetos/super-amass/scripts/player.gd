@@ -17,43 +17,34 @@ var panda_ataque_direita = load("res://sprites/novos_sprites/panda/Panda ataque 
 var panda_ataque_frente = load("res://sprites/novos_sprites/panda/Panda ataque frente.png")
 var panda_ataque_costas = load("res://sprites/novos_sprites/panda/Panda ataque costas.png")
 var posicao_ataque = false
+const VELOCIDADE = 50
+const ATRITO = 0.25
+var espada 
+var total_vidas = 3
+var contador = 0
 
 # Referências a nós
 @onready var posicoes_espada = $Posicoes_espada
 @onready var timer_excluir = $Timer_excluir
+@onready var vidas = [$Vida1, $Vida2, $Vida3]
+@onready var timer_invencivel = $Timer_invencivel
+@onready var game = get_parent()
+@onready var texto_pontos = $Texto_pontos
+@onready var texto_game_over = $Texto_game_over
+
+func _ready():
+	
+	pass
 
 func _physics_process(delta):
 	
 	if permitir_acoes:
 		
-		mover_player(delta)
+		mover(delta)
 		
-	if Input.is_action_just_pressed('Ataque') and posicao_ataque == false:
+		ataque()
 		
-		timer_excluir.start()
-
-		posicao_ataque = true
-		
-		sacar_espada()
-		
-		#if direcao == 'baixo':
-			#$Sprite2D.texture = panda_ataque_frente
-			#
-			#$Sprite2D.z_index = -2
-		#if direcao == 'cima':
-			#$Sprite2D.texture = panda_ataque_costas
-			#
-			#$Sprite2D.z_index = 0
-		if direcao == 'esquerda':
-			
-			$Sprite2D.texture = panda_frente
-			
-			$Sprite2D.z_index = 0
-		if direcao == 'direita':
-			
-			$Sprite2D.texture = panda_frente
-			
-			$Sprite2D.z_index = 0
+	morte()
 		
 # Criando uma função para fazer o jogador empunhar sua espada pronto para atacar
 func sacar_espada():
@@ -73,15 +64,20 @@ func sacar_espada():
 		
 		# Ajustando a rotação da espada
 		instancia_espada.rotation = 89.5
+		
+		instancia_espada.z_index = -1
 	if direcao == 'baixo':
 		posicao = lista_posicoes[3]
 	
 		instancia_espada.rotation = -89.5
+	
 	# Aplicando a posição à espada de acordo com a direção do player
 	instancia_espada.global_position = posicao.position
-
+	
 	# Por fim, usando a função add_child() para fazer com que a espada de fato apareça na tela 
 	add_child(instancia_espada)
+	
+	espada = instancia_espada
 
 # Criando uma função para guardar a espada do jogador	
 func guardar_espada():
@@ -91,56 +87,95 @@ func guardar_espada():
 		instancia_espada.queue_free()
 		instancia_espada = null
  
-func mover_player(delta):
-	# É necessário sempre resetar o valor de velocity.x a cada frame para que ela não se acumule e o jogador se mova rápido demais 
-	velocity.x = 0
-	velocity.y = 0
-	
-	# Movendo o player para todas as 4 direções 
-	if Input.is_action_pressed('ui_left'):
-		velocity.x -= velocidade
-		
-		#if not posicao_ataque:
-		#	$Sprite2D.texture = panda_esquerda
-		
-		direcao = 'esquerda'
-	if Input.is_action_pressed('ui_right'):
-		velocity.x += velocidade
-		
-		#if not posicao_ataque:
-		#	$Sprite2D.texture = panda_direita
-		
-		direcao = 'direita'
-	if Input.is_action_pressed('ui_up'):
-		velocity.y -= velocidade
-		
-		if not posicao_ataque:
-			$Sprite2D.texture = panda_costas
-		
-		direcao = 'cima'
-	if Input.is_action_pressed('ui_down'):
-		velocity.y += velocidade
-		
-		if not posicao_ataque:
-			$Sprite2D.texture = panda_frente
-		
-		direcao = 'baixo'
-		
-	# Usando a função move_and_collide() - que é responsável por de fato mover o jogador
-	move_and_collide(velocity * delta)
-	
 func _on_timer_excluir_timeout() -> void:
 	
 	posicao_ataque = false
 		
 	guardar_espada()
 	
-	if direcao == 'baixo':
+func mover(delta):
+	
+	var direcao_v := Input.get_axis('ui_up', 'ui_down')
+	
+	var direcao_h := Input.get_axis('ui_left', 'ui_right')
+	
+	if direcao_v:
+		
+		velocity.y = direcao_v * VELOCIDADE
+	else:
+		
+		velocity.y = move_toward(velocity.y, 0, ((VELOCIDADE / ATRITO) * delta))
+		
+	if direcao_h:
+		
+		velocity.x = direcao_h * VELOCIDADE
+	else:
+		
+		velocity.x = move_toward(velocity.x, 0, ((VELOCIDADE / ATRITO) * delta))
+		
+	move_and_collide(velocity * delta)
+	
+	if direcao_v > 0:
+		
+		direcao = 'baixo'
+		
 		$Sprite2D.texture = panda_frente
-	if direcao == 'cima':
+	elif direcao_v < 0:
+		
+		direcao = 'cima'
+		
 		$Sprite2D.texture = panda_costas
-	#if direcao == 'esquerda':
-		#$Sprite2D.texture = panda_esquerda
-	#if direcao == 'direita':
-		#$Sprite2D.texture = panda_direita
+	
+	if direcao_h > 0:
+		
+		direcao = 'direita'
+		
+		$Sprite2D.texture = panda_frente
+	elif direcao_h < 0:
+		
+		direcao = 'esquerda'
+		
+		$Sprite2D.texture = panda_frente
+
+func ataque():
+	
+	if Input.is_action_just_pressed('Ataque') and posicao_ataque == false:
+		
+		timer_excluir.start()
+
+		posicao_ataque = true
+		
+		sacar_espada()
+		
+func dano():
+	
+	if total_vidas > 0:
+		
+		vidas[contador].visible = false
+		
+		contador += 1
+		
+		total_vidas -= 1
+
+func morte():
+	
+	if total_vidas <= 0:
+	
+		permitir_acoes = false 
+		
+		texto_game_over.visible = true
+		
+		if Input.is_action_pressed('Ataque'):
+			
+			game.resetar_cena()
+
+func _on_colisao_fisica_body_entered(corpo):
+	
+	if corpo == self:
+		
+		return
+		
+	if corpo is CharacterBody2D:
+		
+		dano()
 		

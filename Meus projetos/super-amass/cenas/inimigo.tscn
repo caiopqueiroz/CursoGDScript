@@ -1,23 +1,47 @@
 [gd_scene format=3 uid="uid://bcxo1uwl6bdcg"]
 
 [ext_resource type="Script" uid="uid://b50hxsrjm1mdu" path="res://scripts/inimigo.gd" id="1_l8wry"]
-[ext_resource type="Texture2D" uid="uid://ws6d8o4dp0bh" path="res://sprites/novos_sprites/leopardo/Leopardo.png" id="2_l8wry"]
+[ext_resource type="Texture2D" uid="uid://bwsy5556knwr8" path="res://sprites/Sprites 8 bits/png/Leopardo andando.png" id="2_l8wry"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_unwft"]
-size = Vector2(89, 47)
+[sub_resource type="AtlasTexture" id="AtlasTexture_g2cae"]
+atlas = ExtResource("2_l8wry")
+region = Rect2(0, 0, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5rp5"]
+atlas = ExtResource("2_l8wry")
+region = Rect2(0, 8, 16, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_diyl1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g2cae")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5rp5")
+}],
+"loop": 1,
+"name": &"andando",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kthid"]
+size = Vector2(14, 6)
 
 [node name="Inimigo" type="CharacterBody2D" unique_id=1274004390]
+z_index = 2
 collision_layer = 4
-collision_mask = 7
+collision_mask = 3
 script = ExtResource("1_l8wry")
-velocidade = 120
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=462022451]
-texture = ExtResource("2_l8wry")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1010100897]
+sprite_frames = SubResource("SpriteFrames_diyl1")
+animation = &"andando"
+autoplay = "andando"
+frame_progress = 0.17358214
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=155098136]
-position = Vector2(6.5, -1.5)
-shape = SubResource("RectangleShape2D_unwft")
+shape = SubResource("RectangleShape2D_kthid")
 
 [node name="Timer_trocar_sprite" type="Timer" parent="." unique_id=2089667473]
 wait_time = 0.25

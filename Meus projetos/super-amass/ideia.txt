@@ -17,8 +17,10 @@ No script do jogo deverão estar:
 
 Player / CharacterBody2D -> Sprite2D + CollisionShape2D
 No script do player deverão estar:
-- A sua movimentação 
-- Mecânica de golpe 
+- A sua movimentação - FEITO
+- Mecânica de golpe: 
+Como vai funcionar? 
+Quando um inimigo estiver no alcance da espada do player, o jogador pode apertar um botão para atacá-lo, assim ele vai sumir da tela e a pontuação irá aumentar. No entanto, se o inimigo tocar o player, o jogador perderá
 
 Inimigo / CharacterBody2D -> Sprite2D + CollisionShape2D
 No script do inimigo deverão estar:

@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://dnv0octobmebv"]
+
+[ext_resource type="FontFile" uid="uid://cwktb68n4tfc0" path="res://fontes/Bytesized-Regular.ttf" id="1_64url"]
+[ext_resource type="Script" uid="uid://ytxr3w510ul8" path="res://scripts/seletor.gd" id="2_hsu4v"]
+[ext_resource type="Texture2D" uid="uid://b1rfqlsnipq3f" path="res://sprites/arara.png" id="3_mmoso"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_diyl1"]
+font = ExtResource("1_64url")
+font_size = 180
+
+[sub_resource type="LabelSettings" id="LabelSettings_5rqkx"]
+font = ExtResource("1_64url")
+font_size = 90
+
+[sub_resource type="LabelSettings" id="LabelSettings_526do"]
+font = ExtResource("1_64url")
+font_size = 85
+
+[sub_resource type="LabelSettings" id="LabelSettings_khh5g"]
+font = ExtResource("1_64url")
+font_size = 90
+
+[node name="Menu" type="Node2D" unique_id=887766524]
+
+[node name="Super Amass" type="Label" parent="." unique_id=76395454]
+offset_right = 1151.0
+offset_bottom = 264.0
+text = "Super Amass"
+label_settings = SubResource("LabelSettings_diyl1")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Jogar" type="Label" parent="." unique_id=477016853]
+offset_left = 400.0
+offset_top = 250.0
+offset_right = 800.0
+offset_bottom = 363.0
+text = "Jogar"
+label_settings = SubResource("LabelSettings_5rqkx")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Bestiário" type="Label" parent="." unique_id=1128286848]
+offset_left = 400.0
+offset_top = 350.0
+offset_right = 800.0
+offset_bottom = 463.0
+text = "Bestiário"
+label_settings = SubResource("LabelSettings_526do")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Emblemas" type="Label" parent="." unique_id=1180529227]
+offset_left = 400.0
+offset_top = 450.0
+offset_right = 800.0
+offset_bottom = 563.0
+text = "Emblemas"
+label_settings = SubResource("LabelSettings_khh5g")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Seletor" type="Node2D" parent="." unique_id=765219686]
+position = Vector2(873, 309)
+script = ExtResource("2_hsu4v")
+
+[node name="Sprite2D" type="Sprite2D" parent="Seletor" unique_id=1361342701]
+texture = ExtResource("3_mmoso")

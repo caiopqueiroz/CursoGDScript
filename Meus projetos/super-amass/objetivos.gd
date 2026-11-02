@@ -27,6 +27,8 @@
 # 2 ) Aumentar a quantidade de lugares onde eles podem ser gerados 
 # Acaba não fazendo sentido deixar que os leopardos apareçam até completarem 5, pois o panda consegue sempre derrotá-los antes que chegue a esse número. Ideia: fazer com que a quantidade de inimigos gerados a cada intervalo seja aleatória
 
+# Colocar no jogo direto os sprites de 8x8 e ampliar a câmera alterando a opção para melhorar pixels arts
+# Criar novos inimigos diferentes - um deles pode não morrer com um único golpe, e ser jogado para longe quando acertado
 # Ideia: encontrar uma forma de trazer mais desafio ao jogo - problema: é muito fácil derrotar os inimigos - opções: 
 # 1 ) Fazer eles correrem em momentos aleatórios 
 # 3 ) Fazer a visão do panda embaçar quando ele for atingido
